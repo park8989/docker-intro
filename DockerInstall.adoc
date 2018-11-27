@@ -1,0 +1,50 @@
+:revnumber: 1.0
+
+= Docker install
+:lang: ja
+:doctype: book
+:docname: Docker Install for CentOS
+:author:
+:revdate: 
+:sectnums: 
+:chapter-label: 
+:toc: 
+:toclevels: 2
+:toc-title: 目次
+:icons: font
+= Docker install for CentOS
+// 改ページ
+<<<
+・改版履歴
+
+[cols="2,5,4,17", options="header"]
+|===
+
+|版数|日付|更新者|内容
+|1.0|2018.11.27|＊＊|新規作成
+
+|===
+
+// 改ページ
+<<<
+
+== Docker HUB から　CentOSのイメージをダウンロード
+* $sudo docker search centos
+* $sudo docker pull docker.io/centos
+* $sudo docker images
+
+* $sudo yum -y install docker
+* $sudo systemctl start docker
+
+* $sudo docker run -d -p 80:80 --name test docker.io/centos:latest /sbin/init
+
+== コンテナの起動
+// 起動したコンテナの確認
+* $sudo docker ps 
+// コンテナへ接続
+* $sudo docker exec -it test /bin/bash
+
+== apachのインストール
+* $yum install httpd
+* $systemctl start httpd
+* $systemctl enable httpd
