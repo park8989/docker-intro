@@ -65,7 +65,10 @@
 
 == 新規のイメージからコンテナの作成
 * $sudo docker run -d -p 80:80 -name test2 new_image:latest /sbin/init
-* sudo docker ps
+// 上で80:80のポートを指定しているが、前のコンテナが上がっているとポートが競合することになり、立ち上がらなくなる。
+// 起動しているコンテナの情報をみる
+* $sudo docker ps
+// ちなみに　$sudo docker ps -a のように -aを追加することで、停止しているコンテナの情報も含めてみることができる。
 
 
 
