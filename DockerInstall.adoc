@@ -27,24 +27,45 @@
 
 // 改ページ
 <<<
-
-== Docker HUB から　CentOSのイメージをダウンロード
-* $sudo docker search centos
-* $sudo docker pull docker.io/centos
-* $sudo docker images
-
+== サーバへDockerをインストール
+// CentosのリポジトリからDockerをインストール
 * $sudo yum -y install docker
+// Dockerサービスのスタート
 * $sudo systemctl start docker
 
+== Docker HUB から　CentOSのイメージをダウンロード
+// Centosのイメージ名の確認
+* $sudo docker search centos
+// Centosのイメージをダウンロード
+* $sudo docker pull docker.io/centos
+// ダウンロードしたイメージの確認
+* $sudo docker images
+== コンテナの起動
+// イメージからコンテナの起動
 * $sudo docker run -d -p 80:80 --name test docker.io/centos:latest /sbin/init
 
-== コンテナの起動
 // 起動したコンテナの確認
 * $sudo docker ps 
 // コンテナへ接続
 * $sudo docker exec -it test /bin/bash
 
-== apachのインストール
+== コンテナ上でapachのインストール
 * $yum install httpd
 * $systemctl start httpd
+// 上のコマンドでWEBサービスが立ち上がる
 * $systemctl enable httpd
+
+== 新しいコンテナイメージの作成
+* $exit
+* $sudo docker stop test
+* $sudo docker commit test new_image
+// これでnew_imageはapachがインストールされたコンテナイメージになる。
+// 確認
+* $sudo docker image
+
+== 新規のイメージからコンテナの作成
+* $sudo docker run -d -p 80:80 -name test2 new_image:latest /sbin/init
+* sudo docker ps
+
+
+
