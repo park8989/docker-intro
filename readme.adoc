@@ -1,0 +1,3 @@
+= readme
+:lang: ja
+ここでは、DockerコンテナをCentOｓにインストールする過程を示している。
